@@ -25,6 +25,6 @@
     "vite": "^5.3.4"
   },
   "dependencies": {
-    "@jume-labs/jume-engine": "link:../jume-engine"
+    "@jume-labs/jume-engine": "github:jume-labs/jume-engine"
   }
 }
