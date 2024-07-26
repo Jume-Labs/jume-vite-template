@@ -7,7 +7,7 @@ export class GameScene extends Scene {
   constructor() {
     super();
 
-    this.addSystem(SRender, {});
+    this.addSystem(SRender);
 
     this.cameras[0].bgColor.set(0.2, 0.5, 1, 1);
 
