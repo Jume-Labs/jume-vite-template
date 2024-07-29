@@ -9,13 +9,15 @@ import {
   TweenSequence,
 } from '@jume-labs/jume-engine';
 
-export type CJumpProps = {
+export interface CJumpProps extends BaseComponentProps {
   tweens: TweenManager;
-};
+}
 
 export class CJump extends Component {
-  constructor(base: BaseComponentProps, props: CJumpProps) {
-    super(base);
+  constructor(props: CJumpProps) {
+    super(props);
+
+    const { tweens } = props;
 
     const transform = this.getComponent(CTransform);
 
@@ -34,6 +36,6 @@ export class CJump extends Component {
     ).setEase(easeInCubic);
 
     const sequence = new TweenSequence([upTween, downTween], -1);
-    props.tweens.addSequence(sequence);
+    tweens.addSequence(sequence);
   }
 }

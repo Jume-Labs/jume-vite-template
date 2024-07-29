@@ -1,24 +1,22 @@
-import {
-  AssetManager,
-  Atlas,
-  CSprite,
-  CSpriteProps,
-  CTransform,
-  CTransformProps,
-  Entity,
-  inject,
-} from '@jume-labs/jume-engine';
+import { AssetManager, Atlas, CSprite, CTransform, Entity, inject } from '@jume-labs/jume-engine';
+
+export type ETileProps = {
+  x: number;
+  y: number;
+};
 
 export class ETile extends Entity {
   @inject
   private readonly assetManager!: AssetManager;
 
-  constructor(x: number, y: number) {
+  constructor(props: ETileProps) {
     super();
+
+    const { x, y } = props;
 
     const atlas = this.assetManager.getAsset(Atlas, 'sprites');
 
-    this.addComponent<CTransform, CTransformProps>(CTransform, { x, y });
-    this.addComponent<CSprite, CSpriteProps>(CSprite, { atlas, frameName: 'ground' });
+    this.addComponent(CTransform, { x, y });
+    this.addComponent(CSprite, { atlas, frameName: 'ground' });
   }
 }

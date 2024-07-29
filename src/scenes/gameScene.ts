@@ -7,20 +7,18 @@ export class GameScene extends Scene {
   constructor() {
     super();
 
-    this.addSystem(SRender);
+    this.addSystem(SRender, 0, {});
 
     this.cameras[0].bgColor.set(0.2, 0.5, 1, 1);
 
     this.addGround();
 
-    const alien = new EAlien(this.view.viewCenterX, this.view.viewHeight - 110, this.tweenManager);
-    this.addEntity(alien);
+    this.addEntity(EAlien, { x: this.view.viewCenterX, y: this.view.viewHeight - 110, tweens: this.tweenManager });
   }
 
   private addGround(): void {
     for (let i = 0; i < 12; i++) {
-      const tile = new ETile(i * 70, this.view.viewHeight - 30);
-      this.addEntity(tile);
+      this.addEntity(ETile, { x: i * 70, y: this.view.viewHeight - 30 });
     }
   }
 }
